@@ -12,7 +12,7 @@ export function CreateTripPage() {
   const [isGuestInputOpen, setIsGuestInputOpen] = useState(false)
   const [isGuestModalOpen, setIsGuestModalOpen] = useState(false)
   const [isConfirmTripModalOpen, setIsConfirmTripModalOpen] = useState(false)
-  const [emailsToInvite, setEmailsToInvite] = useState(['eula@gmail.com'])
+  const [emailsToInvite, setEmailsToInvite] = useState<string[]>([])
   const [destination, setDestination] = useState('')
   const [ownerName, setOwnerName] = useState('')
   const [ownerEmail, setOwnerEmail] = useState('')
@@ -62,15 +62,9 @@ export function CreateTripPage() {
   async function createTrip(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
 
-    console.log(destination);
-    console.log(eventStartAndDates);
-    console.log(emailsToInvite);
-    console.log(ownerEmail);
-    console.log(ownerName);
-
     if(
       !destination || 
-      !eventStartAndDates?.from || eventStartAndDates?.to || 
+      !eventStartAndDates?.from || !eventStartAndDates?.to || 
       emailsToInvite.length === 0 || 
       !ownerName || !ownerEmail){
       return
